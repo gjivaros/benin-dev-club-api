@@ -15,5 +15,6 @@ Open browser at http://localhost:9000
 ## Installation
 
 ```sh
-( mkdir data && cp config.sample.json config.json && sqlite3 data/benindev.db < dev-env/benindev.ddl.sql && npm i && npm run dev ) 
+
+( rm -rf data &&  mkdir data && cp config.sample.json config.json && sqlite3 data/benindev.db < dev-env/benindev.ddl.sql && npm i && npm run dev ) 
 ```

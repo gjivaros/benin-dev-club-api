@@ -1,0 +1,16 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Account {
+  email: String!
+  id: ID!
+}
+
+type Mutation {
+  verifyToken(token: String!): Boolean!
+}
+
+type Query {
+  account(id: ID!): Account!
+}
