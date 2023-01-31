@@ -20,7 +20,8 @@
   "files": {
     "ignore": [
       "*.js",
-      "*.cjs"
+      "*.cjs",
+      "*.sql"
     ]
   }
 }

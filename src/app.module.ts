@@ -3,7 +3,6 @@ import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { join } from "path";
-import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { appConf, packageDir } from "./context";
 import { AccountModule } from "./modules/account/account.module";
@@ -31,7 +30,7 @@ import { MyCustomLogger } from "./typeorm-custom-logger";
     AccountModule,
     LoginModule
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [AppService],
 })
 export class AppModule {}
