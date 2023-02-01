@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Profil } from "../profil/profil-object-type";
+import { ProfilEntity } from "../profil/profil.entity";
 
 @Entity('Account')
 export class AccountEntity {
@@ -11,6 +13,9 @@ export class AccountEntity {
 
 	@Column({ nullable: true })
 	passwordHash?: string;
+
+	@OneToOne(()=>ProfilEntity, (profil)=>profil.account,{eager: true})
+	profil!: ProfilEntity;
 }
 
 @ObjectType()
@@ -20,4 +25,7 @@ export class Account {
 
 	@Field(() => String)
 	email!: string;
+
+	@Field(()=>Profil,{nullable: true})
+	profil?: Profil;
 }

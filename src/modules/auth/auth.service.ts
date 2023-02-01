@@ -32,6 +32,9 @@ export class AuthService {
 	async login(user: LoginInput): Promise<LoginSuccess | LoginFaild> {
 		const payload = await this.validateUser(user);
 		if (payload) {
+			if (!payload.profil) {
+				await this.accountService.createProfil(payload.id);
+			}
 			return {
 				id: payload.id,
 				email: payload.email,

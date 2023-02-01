@@ -5,12 +5,70 @@
 type Account {
   email: String!
   id: ID!
+  profil: Profil
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Links {
+  github: String
+  linkdin: String
+  portFolio: String
+}
+
+input LinksInput {
+  github: String
+  linkdin: String
+  portFolio: String
 }
 
 type Mutation {
+  updateProfil(accountId: String!, values: UpdateProfilInput!): Profil!
   verifyToken(token: String!): Boolean!
+}
+
+type Profil {
+  accountId: ID!
+  createAt: DateTime!
+  description: String
+  firstName: String
+  lastName: String
+  links: Links
+  localisation: String
+  pseudo: String
+  skills: Skills
+  updateAt: DateTime!
 }
 
 type Query {
   account(id: ID!): Account!
+}
+
+type Skills {
+  backEnd: [String!]
+  devOps: [String!]
+  frontEnd: [String!]
+  other: [String!]
+}
+
+input SkillsInput {
+  backEnd: [String!]
+  devOps: [String!]
+  frontEnd: [String!]
+  other: [String!]
+}
+
+input UpdateProfilInput {
+  createAt: DateTime!
+  description: String!
+  firstName: String!
+  lastName: String!
+  links: LinksInput!
+  localisation: String!
+  pseudo: String!
+  skills: SkillsInput!
+  updateAt: DateTime!
 }
