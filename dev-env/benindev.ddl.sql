@@ -16,10 +16,10 @@ create table Profil(
   pseudo varchar(50),
   firstName varchar(100),
   lastName varchar(100),
-  skills json,
+  skills text,
   localisation varchar(200),
   description text,
-  links json,
+  links text,
   createAt timestamp not null default current_timestamp,
   updateAt timestamp not null default current_timestamp,
   primary key (accountId)

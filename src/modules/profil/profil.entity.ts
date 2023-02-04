@@ -8,6 +8,7 @@ import {
 	UpdateDateColumn,
 } from "typeorm";
 import { AccountEntity } from "../account/account.entity";
+import { GratuationEntity } from "../gratuation/gratuation.entity";
 import { Links, Skills } from "./profil-object-type";
 
 @Entity("Profil")
@@ -25,7 +26,7 @@ export class ProfilEntity {
 	lastName?: string;
 
 	@Column({ nullable: true, type: "text"})
-	skills?: Skills;
+	skills?: Skills | string;
 
 	@Column({nullable: true})
 	localisation?: string;
@@ -34,7 +35,7 @@ export class ProfilEntity {
 	description?: string;
 
 	@Column({nullable: true, type: 'text'})
-	links?: Links;
+	links?: Links | string;
 
 	@CreateDateColumn({default: new Date().toUTCString()})
 	createAt!: string;
@@ -45,4 +46,7 @@ export class ProfilEntity {
 	@OneToOne(()=>AccountEntity, (account)=>account.profil)
 	@JoinColumn({name: "accountId"})
 	account!: AccountEntity;
+
+	@OneToOne(()=>GratuationEntity, (gratuation)=>gratuation.profil)
+	gratuation!: GratuationEntity;
 }

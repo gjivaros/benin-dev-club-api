@@ -13,6 +13,12 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Gratuation {
+  gratuationYear: Int!
+  profilId: ID!
+  status: String!
+}
+
 type Links {
   github: String
   linkdin: String
@@ -26,7 +32,8 @@ input LinksInput {
 }
 
 type Mutation {
-  updateProfil(accountId: String!, values: UpdateProfilInput!): Profil!
+  updateGratuation(profilId: String!, values: UpdateGratuationInput!): Gratuation!
+  updateProfil(accountId: ID!, values: UpdateProfilInput!): Profil!
   verifyToken(token: String!): Boolean!
 }
 
@@ -35,6 +42,7 @@ type Profil {
   createAt: DateTime!
   description: String
   firstName: String
+  gratuation: Gratuation!
   lastName: String
   links: Links
   localisation: String
@@ -61,14 +69,17 @@ input SkillsInput {
   other: [String!]
 }
 
+input UpdateGratuationInput {
+  gratuationYear: Int!
+  status: String!
+}
+
 input UpdateProfilInput {
-  createAt: DateTime!
-  description: String!
-  firstName: String!
-  lastName: String!
-  links: LinksInput!
-  localisation: String!
-  pseudo: String!
-  skills: SkillsInput!
-  updateAt: DateTime!
+  description: String
+  firstName: String
+  lastName: String
+  links: LinksInput
+  localisation: String
+  pseudo: String
+  skills: SkillsInput
 }

@@ -7,6 +7,7 @@ import { AppService } from "./app.service";
 import { appConf, packageDir } from "./context";
 import { AccountModule } from "./modules/account/account.module";
 import { AuthModule } from "./modules/auth/auth.module";
+import { GratuationModule } from "./modules/gratuation/gratuation.module";
 import { LoginModule } from "./modules/login/login.module";
 import { ProfilModule } from "./modules/profil/profil.module";
 import { MyCustomLogger } from "./typeorm-custom-logger";
@@ -30,7 +31,8 @@ import { MyCustomLogger } from "./typeorm-custom-logger";
     AuthModule,
     AccountModule,
     LoginModule,
-    ProfilModule
+    ProfilModule,
+    GratuationModule
   ],
   controllers: [],
   providers: [AppService],

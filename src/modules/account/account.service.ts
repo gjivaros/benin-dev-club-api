@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { hashPassword } from "src/helpers/passwordEncrypt-helper";
 import { DataSource, Repository } from "typeorm";
 import { LoginInput } from "../auth/auth.service";
+import { GratuationEntity } from "../gratuation/gratuation.entity";
 import { ProfilEntity } from "../profil/profil.entity";
 import { AccountEntity } from "./account.entity";
 
@@ -49,8 +50,15 @@ export class AccountService {
 		};
 	}
 
+	async createGratuation(profilId: string) {
+		const repo = this.dataSource.getRepository(GratuationEntity);
+		return await repo.save({ profilId });
+	}
+
 	async createProfil(accountId: string) {
 		const profileRepository = this.dataSource.getRepository(ProfilEntity);
-		return await profileRepository.save({ accountId });
+		const profil = await profileRepository.save({ accountId });
+		await this.createGratuation(profil.accountId);
+		return profil;
 	}
 }
