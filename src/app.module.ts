@@ -9,6 +9,7 @@ import { AccountModule } from "./modules/account/account.module";
 import { AuthModule } from "./modules/auth/auth.module";
 import { GratuationModule } from "./modules/gratuation/gratuation.module";
 import { LoginModule } from "./modules/login/login.module";
+import { PhotoModule } from "./modules/photo/photo.module";
 import { ProfilModule } from "./modules/profil/profil.module";
 import { MyCustomLogger } from "./typeorm-custom-logger";
 
@@ -32,7 +33,9 @@ import { MyCustomLogger } from "./typeorm-custom-logger";
     AccountModule,
     LoginModule,
     ProfilModule,
-    GratuationModule
+    GratuationModule,
+    PhotoModule
+
   ],
   controllers: [],
   providers: [AppService],

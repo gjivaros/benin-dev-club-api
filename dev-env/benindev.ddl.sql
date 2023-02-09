@@ -28,7 +28,7 @@ create table Profil(
 create table Gratuation(
   profilId integer not null references Profil (accountId),
   status varchar,
-  gatuationYear integer,
+  gratuationYear integer,
   primary key (profilId)
 );
 

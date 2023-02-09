@@ -39,6 +39,7 @@ type Mutation {
 
 type Profil {
   accountId: ID!
+  avatar: String!
   createAt: DateTime!
   description: String
   firstName: String
@@ -53,6 +54,7 @@ type Profil {
 
 type Query {
   account(id: ID!): Account!
+  profil(accountId: ID!): Profil!
 }
 
 type Skills {

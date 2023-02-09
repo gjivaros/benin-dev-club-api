@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import { AccountEntity } from "../account/account.entity";
 import { GratuationEntity } from "../gratuation/gratuation.entity";
+import { PhotoEntity } from "../photo/photo.entity";
 import { Links, Skills } from "./profil-object-type";
 
 @Entity("Profil")
@@ -49,4 +50,7 @@ export class ProfilEntity {
 
 	@OneToOne(()=>GratuationEntity, (gratuation)=>gratuation.profil)
 	gratuation!: GratuationEntity;
+
+	@OneToOne(()=>PhotoEntity, (photo)=>photo.profil)
+	photo!: PhotoEntity;
 }
